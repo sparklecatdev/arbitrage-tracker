@@ -1,0 +1,978 @@
+:root {
+  color-scheme: dark;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #0c0d10;
+  color: #f1f3f5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(44, 196, 149, 0.1), transparent 34rem),
+    linear-gradient(180deg, #111318 0%, #0c0d10 38rem);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  letter-spacing: 0;
+}
+
+button,
+input[type="range"] {
+  cursor: pointer;
+}
+
+.appShell {
+  width: min(1500px, 100%);
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 86px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brandBlock {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.productMark {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: #181b20;
+  overflow: hidden;
+}
+
+.productMark::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140%;
+  height: 11px;
+  background: #2cc495;
+  content: "";
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: #9098a3;
+  font-size: 0.72rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+h1 {
+  color: #fbfcfd;
+  font-size: clamp(2rem, 4.8vw, 4.8rem);
+  font-weight: 760;
+  line-height: 0.95;
+}
+
+h2 {
+  color: #f4f6f8;
+  font-size: 1rem;
+  font-weight: 720;
+}
+
+.streamPill,
+.primaryButton,
+.thresholdControl {
+  display: inline-flex;
+  align-items: center;
+}
+
+.streamPill {
+  flex: 0 0 auto;
+  gap: 10px;
+  min-height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #d7dde4;
+  padding: 0 12px;
+  text-transform: capitalize;
+}
+
+.pulse,
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #eab308;
+}
+
+.pulse.live,
+.dot.ok {
+  background: #2cc495;
+  box-shadow: 0 0 0 5px rgba(44, 196, 149, 0.14);
+}
+
+.pulse.offline,
+.dot.bad {
+  background: #f05d5e;
+}
+
+.pulse.stale {
+  background: #eab308;
+}
+
+.muted,
+.subtle,
+small {
+  color: #818a96;
+}
+
+.commandBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px 0 18px;
+}
+
+.thresholdControl {
+  flex: 1 1 520px;
+  gap: 12px;
+  min-width: 0;
+}
+
+.thresholdControl span {
+  flex: 0 0 auto;
+  color: #b5bdc7;
+  font-size: 0.86rem;
+  font-weight: 680;
+}
+
+.thresholdControl input {
+  width: min(520px, 100%);
+  accent-color: #2cc495;
+}
+
+.thresholdControl strong {
+  min-width: 76px;
+  color: #f7f9fb;
+  text-align: right;
+}
+
+.primaryButton,
+.saveButton,
+.marketComposer button,
+.groupTitle button,
+.endpointActions button,
+.tokenList button {
+  min-height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #edf1f5;
+  padding: 0 12px;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.primaryButton {
+  gap: 9px;
+  background: #f5f7f9;
+  color: #111419;
+  font-weight: 780;
+}
+
+.primaryButton:hover,
+.saveButton:hover,
+.marketComposer button:hover,
+.groupTitle button:hover,
+.endpointActions button:hover,
+.tokenList button:hover {
+  border-color: rgba(44, 196, 149, 0.55);
+  transform: translateY(-1px);
+}
+
+.primaryButton span {
+  display: grid;
+  width: 20px;
+  height: 20px;
+  place-items: center;
+  border-radius: 50%;
+  background: #2cc495;
+  color: #07110d;
+}
+
+.marketPicker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 20px;
+}
+
+.marketPicker button {
+  min-height: 34px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: #aab2bd;
+  padding: 0 11px;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.marketPicker button:hover,
+.marketPicker button.active {
+  border-color: rgba(44, 196, 149, 0.34);
+  background: rgba(44, 196, 149, 0.09);
+  color: #f6f8fa;
+}
+
+.overview {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-block: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.metric {
+  min-height: 118px;
+  padding: 20px 20px 18px 0;
+}
+
+.metric + .metric {
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  padding-left: 20px;
+}
+
+.metric span,
+.metric small {
+  display: block;
+}
+
+.metric span {
+  color: #8f98a5;
+  font-size: 0.76rem;
+  font-weight: 780;
+  text-transform: uppercase;
+}
+
+.metric strong {
+  display: block;
+  margin-top: 13px;
+  color: #f9fafb;
+  font-size: clamp(1.9rem, 4vw, 3.7rem);
+  font-weight: 740;
+  line-height: 0.95;
+}
+
+.metric small {
+  margin-top: 8px;
+}
+
+.positiveText {
+  color: #2cc495 !important;
+}
+
+.lossText {
+  color: #f05d5e;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 430px);
+  gap: 28px;
+  margin-top: 26px;
+  align-items: start;
+}
+
+.marketDesk,
+.inspectorPanel {
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 8px;
+  background: rgba(17, 19, 24, 0.72);
+  backdrop-filter: blur(18px);
+}
+
+.marketDesk {
+  overflow: hidden;
+}
+
+.devInspector {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 70px;
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sectionHeader.compact {
+  min-height: 62px;
+  padding: 16px;
+}
+
+.tableCount,
+.configMeta span,
+.miniStats {
+  color: #aeb7c2;
+  font-size: 0.76rem;
+  font-weight: 740;
+  white-space: nowrap;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 820px;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 15px 20px;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+th {
+  color: #8e98a5;
+  font-size: 0.74rem;
+  font-weight: 780;
+  text-transform: uppercase;
+}
+
+td {
+  color: #e8edf2;
+}
+
+tr {
+  transition:
+    background 160ms ease,
+    color 160ms ease;
+}
+
+tr.profitable {
+  background: rgba(44, 196, 149, 0.08);
+}
+
+tbody tr:hover {
+  background: rgba(255, 255, 255, 0.045);
+}
+
+td .subtle {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.82rem;
+}
+
+.empty {
+  margin: 0;
+  padding: 36px 20px;
+  color: #8f98a5;
+}
+
+.settingsPanel {
+  overflow: hidden;
+}
+
+.configMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 16px 0;
+}
+
+.configMeta span {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+  padding: 6px 8px;
+}
+
+.settingsBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+  padding: 16px;
+}
+
+.field,
+.settingGroup {
+  display: grid;
+  gap: 8px;
+}
+
+.field.wide,
+.settingGroup,
+.saveState {
+  grid-column: 1 / -1;
+}
+
+.field span,
+.settingGroup > span,
+.groupTitle span,
+.feeGrid span {
+  color: #9ea8b4;
+  font-size: 0.72rem;
+  font-weight: 780;
+  text-transform: uppercase;
+}
+
+.field input,
+.marketComposer input,
+.feeGrid input,
+.customExchangeComposer input,
+.endpointRow input,
+.endpointStack textarea,
+.headersComposer {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.045);
+  color: #f7f9fb;
+  padding: 0 10px;
+  outline: none;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.field input:focus,
+.marketComposer input:focus,
+.feeGrid input:focus,
+.customExchangeComposer input:focus,
+.endpointRow input:focus,
+.endpointStack textarea:focus,
+.headersComposer:focus {
+  border-color: rgba(44, 196, 149, 0.66);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.saveButton {
+  background: #f5f7f9;
+  color: #111419;
+  font-weight: 780;
+}
+
+.saveButton.saved {
+  background: #2cc495;
+  color: #07110d;
+}
+
+.saveButton.error {
+  border-color: rgba(240, 93, 94, 0.48);
+  background: rgba(240, 93, 94, 0.14);
+  color: #ffd8d8;
+}
+
+.tokenList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.tokenList button {
+  min-height: 32px;
+  background: rgba(44, 196, 149, 0.08);
+  color: #d8fbef;
+}
+
+.exchangeTokenList {
+  display: grid;
+  gap: 8px;
+}
+
+.exchangeToken {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 32px;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+  padding: 8px 8px 8px 10px;
+}
+
+.exchangeToken div {
+  min-width: 0;
+}
+
+.exchangeToken strong,
+.exchangeToken span {
+  display: block;
+}
+
+.exchangeToken strong {
+  color: #f3f6f8;
+  font-size: 0.9rem;
+}
+
+.exchangeToken span {
+  color: #8f98a5;
+  font-size: 0.78rem;
+  overflow-wrap: anywhere;
+}
+
+.exchangeToken button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #cfd6df;
+  padding: 0;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.exchangeToken button:hover {
+  border-color: rgba(240, 93, 94, 0.5);
+  background: rgba(240, 93, 94, 0.12);
+  color: #ffd8d8;
+}
+
+.marketComposer,
+.groupTitle,
+.customExchangeComposer,
+.endpointRow,
+.endpointActions {
+  display: flex;
+  gap: 8px;
+}
+
+.marketComposer,
+.groupTitle,
+.customExchangeComposer,
+.endpointActions {
+  align-items: center;
+}
+
+.marketComposer input {
+  min-width: 0;
+}
+
+.customExchangeComposer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 108px;
+}
+
+.customExchangeComposer input:nth-child(2) {
+  grid-column: 1 / -1;
+}
+
+.customExchangeComposer button {
+  grid-column: 1 / -1;
+}
+
+.customExchangeComposer input {
+  min-width: 0;
+}
+
+.marketComposer span {
+  color: #8f98a5;
+  font-weight: 780;
+}
+
+.groupTitle {
+  justify-content: space-between;
+}
+
+.feeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.feeGrid label {
+  display: grid;
+  gap: 6px;
+}
+
+.endpointRow {
+  align-items: center;
+}
+
+.endpointStack {
+  display: grid;
+  gap: 8px;
+  padding-top: 2px;
+}
+
+.endpointStack textarea {
+  min-height: 76px;
+  padding: 9px 10px;
+  resize: vertical;
+}
+
+.headersComposer {
+  min-height: 68px;
+  padding: 9px 10px;
+  resize: vertical;
+}
+
+.endpointActions {
+  flex-wrap: wrap;
+}
+
+.endpointActions span {
+  color: #8f98a5;
+  font-size: 0.82rem;
+}
+
+.endpointActions .testOk {
+  color: #2cc495;
+}
+
+.endpointActions .testBad {
+  color: #ff8a8a;
+}
+
+.endpointRow input:first-child {
+  flex: 0 0 92px;
+}
+
+.endpointRow input:nth-child(2) {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.settingsHint,
+.saveState {
+  margin: 0;
+  color: #8f98a5;
+  font-size: 0.86rem;
+}
+
+.saveState.saved {
+  color: #2cc495;
+}
+
+.saveState.error {
+  color: #ff8a8a;
+}
+
+.statusList,
+.quoteTape {
+  display: grid;
+}
+
+.statusRow,
+.quoteRow {
+  display: grid;
+  gap: 12px;
+  padding: 15px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.statusRow {
+  grid-template-columns: 10px minmax(0, 1fr) auto;
+  align-items: center;
+}
+
+.exchangeBlock:last-child,
+.statusRow:last-child,
+.quoteRow:last-child {
+  border-bottom: 0;
+}
+
+.statusButton {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: background 160ms ease;
+}
+
+.statusButton:hover,
+.statusButton[aria-expanded="true"] {
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.statusMeta {
+  display: grid;
+  gap: 4px;
+  justify-items: end;
+}
+
+.diagnostics {
+  display: grid;
+  gap: 9px;
+  padding: 0 16px 16px 34px;
+}
+
+.diagnosticRow {
+  display: grid;
+  gap: 8px;
+  border-left: 2px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.035);
+  padding: 10px 12px;
+}
+
+.diagnosticRow.passed {
+  border-left-color: #2cc495;
+}
+
+.diagnosticRow.failed {
+  border-left-color: #f05d5e;
+}
+
+.diagnosticHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.diagnosticHead strong {
+  font-size: 0.9rem;
+}
+
+.diagnosticHead span {
+  color: #b9c2cc;
+  font-size: 0.72rem;
+  font-weight: 780;
+  text-transform: uppercase;
+}
+
+.diagnosticRow.passed .diagnosticHead span {
+  color: #9df5d6;
+}
+
+.diagnosticRow.failed .diagnosticHead span {
+  color: #ffaaa9;
+}
+
+.diagnosticRow dl {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+}
+
+.diagnosticRow dl div {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr);
+  gap: 10px;
+}
+
+.diagnosticRow dt {
+  color: #747e8b;
+  font-size: 0.72rem;
+  font-weight: 780;
+  text-transform: uppercase;
+}
+
+.diagnosticRow dd {
+  margin: 0;
+  color: #dbe1e8;
+  font-size: 0.82rem;
+  overflow-wrap: anywhere;
+}
+
+.diagnosticEmpty {
+  margin: 0;
+  padding: 0 16px 16px 34px;
+  color: #8f98a5;
+  font-size: 0.86rem;
+}
+
+.statusRow div,
+.quoteRow div {
+  min-width: 0;
+}
+
+.statusRow strong,
+.statusRow span,
+.quoteRow strong,
+.quoteRow span {
+  display: block;
+}
+
+.statusRow span,
+.quoteRow span {
+  color: #9ea8b4;
+  font-size: 0.86rem;
+  overflow-wrap: anywhere;
+}
+
+.quoteRow {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.quoteRow div:last-child {
+  text-align: right;
+}
+
+.quoteRow div:last-child span:first-child {
+  color: #7de8c2;
+}
+
+.quoteRow div:last-child span:last-child {
+  color: #ff9a99;
+}
+
+@media (max-width: 1080px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .devInspector {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .settingsPanel {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 820px) {
+  .appShell {
+    padding: 18px;
+  }
+
+  .topBar,
+  .commandBar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .streamPill {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .thresholdControl {
+    align-items: stretch;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .thresholdControl strong {
+    text-align: left;
+  }
+
+  .primaryButton {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .overview {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .metric {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-left: 0;
+  }
+
+  .metric + .metric {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .metric:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+
+  .devInspector {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .brandBlock {
+    align-items: flex-start;
+  }
+
+  .productMark {
+    width: 38px;
+    height: 38px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 13vw, 3.4rem);
+  }
+
+  .overview,
+  .settingsBody,
+  .feeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .metric,
+  .metric:nth-last-child(-n + 2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .metric:last-child {
+    border-bottom: 0;
+  }
+
+  .sectionHeader,
+  .sectionHeader.compact,
+  .endpointActions,
+  .marketComposer,
+  .customExchangeComposer,
+  .endpointRow {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .customExchangeComposer {
+    display: flex;
+  }
+
+  .endpointRow input:first-child {
+    flex-basis: auto;
+  }
+}
